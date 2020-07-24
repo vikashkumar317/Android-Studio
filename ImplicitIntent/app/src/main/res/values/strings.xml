@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ImplicitIntent</string>
+    <string name="chooser_title">Choose App</string>
+</resources>

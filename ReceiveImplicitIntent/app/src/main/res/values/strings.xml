@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ReceiveImplicitIntent</string>
+    <string name="URI_LABEL">"URI Found : "</string>
+</resources>
