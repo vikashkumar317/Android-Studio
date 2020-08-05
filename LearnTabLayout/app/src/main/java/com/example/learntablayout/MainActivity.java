@@ -12,6 +12,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private BottomNavigationView navigationView;
     private ActionBar actionBar;
+    public final static String CURRENT_FRAGMENT = "cuurentFragment";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +37,16 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         actionBar = getSupportActionBar();
-        actionBar.setTitle("Home");
-        loadFragment(new HomeFragment());
+
+        if(savedInstanceState != null){
+            actionBar.setTitle(savedInstanceState.getString("Title"));
+            loadFragment(getSupportFragmentManager().getFragment(savedInstanceState, CURRENT_FRAGMENT));
+        }
+        else{
+            actionBar.setTitle("Home");
+            loadFragment(new HomeFragment());
+        }
+
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -66,6 +76,14 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.frameContainer);
+        getSupportFragmentManager().putFragment(outState, CURRENT_FRAGMENT, currentFragment);
+        outState.putString("Title", (String) actionBar.getTitle());
     }
 
     private void loadFragment(Fragment fragment) {
