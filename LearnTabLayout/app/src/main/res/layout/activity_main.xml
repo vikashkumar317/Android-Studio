@@ -17,23 +17,23 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/orange"
-            app:tabTextColor="@color/white"
-            app:tabMinWidth="100dp"
-            app:tabSelectedTextColor="@color/colorAccent"
-            app:tabMode="scrollable"/>
-
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_height="match_parent"
+    <FrameLayout
+        android:id="@+id/frameContainer"
         android:layout_width="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/darkGreen"
+        app:itemTextColor="@color/colorAccent"
+        app:itemIconTint="@color/white"
+        app:menu="@menu/navigation"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
