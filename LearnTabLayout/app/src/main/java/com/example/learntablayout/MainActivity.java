@@ -1,5 +1,9 @@
 package com.example.learntablayout;
 
+import android.Manifest;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -8,9 +12,13 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -34,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
         navigationView =  findViewById(R.id.navigation);
+        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) navigationView.getLayoutParams();
+        layoutParams.setBehavior(new BottomNavigationBehavior());
 
         setSupportActionBar(toolbar);
         actionBar = getSupportActionBar();
@@ -76,6 +86,38 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.action_exit){
+            new AlertDialog.Builder(this)
+                    .setTitle("Dialogue")
+                    .setMessage("Want to Exit from App")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            finishAndRemoveTask();
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    })
+                    .create()
+                    .show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
