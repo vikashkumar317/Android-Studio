@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.AddNoteFragment">
+
+    <EditText
+        android:id="@+id/titleET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_input"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="5dp"
+        android:padding="5dp"
+        android:textSize="25sp"
+        android:hint="Title" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleET"
+        android:background="@drawable/custom_input"
+        android:layout_margin="10dp"
+        android:layout_marginTop="5dp"
+        android:textSize="20sp"
+        android:padding="5dp"
+        android:id="@+id/notesET"
+        android:hint="Notes"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/saveFAButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:clickable="true"
+        android:src="@drawable/ic_save"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

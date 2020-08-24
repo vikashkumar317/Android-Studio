@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <font
+        app:font="@font/basic_english"
+        app:fontWeight="400"
+        app:fontStyle="normal"/>
+
+    <font
+        app:font="@font/berkshire_swash"
+        app:fontWeight="400"
+        app:fontStyle="normal"/>
+
+    <font
+        app:fontStyle="normal"
+        app:font="@font/times_new_roman"
+        app:fontWeight="400"/>
+
+    <font
+        app:font="@font/krutidev_011"
+        app:fontStyle="normal"
+        app:fontWeight="400"/>
+</font-family>
