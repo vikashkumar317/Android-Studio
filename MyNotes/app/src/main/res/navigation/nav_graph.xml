@@ -12,7 +12,12 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/actionAddNote"
-            app:destination="@id/addNoteFragment" />
+            app:destination="@id/addNoteFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            />
     </fragment>
     <fragment
         android:id="@+id/addNoteFragment"
@@ -21,7 +26,13 @@
         tools:layout="@layout/fragment_add_note" >
         <action
             android:id="@+id/actionSaveNote"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/homeFragment"
+            app:popUpToInclusive="true"/>
         <argument
             android:name="Note"
             app:nullable="true"
